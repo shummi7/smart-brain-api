@@ -12,12 +12,12 @@ const image=require('./controllers/image');
 const postgres_db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'postgresql-objective-71349',
       user : 'postgres',
       password : '0106',
       database : 'smart_brain_db'
     }
-  });
+  }); 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
