@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/',(req,res)=>{
-    res.json(database.users);
+    res.json('it is working!!yayyyy');
 });
 
 app.post('/signin', (req,res) =>{ signin.handleSignin(req,res,postgres_db,bcrypt)});
@@ -34,5 +34,7 @@ app.post('/imageurl',(req,res) =>{  image.handleImageUrl(req,res)});
 
 
 
-app.listen(3001); 
+app.listen(procee.env.PORT || 3001, ()={
+  console.log(`it is working${process.env.PORT}`)
+}); 
 
