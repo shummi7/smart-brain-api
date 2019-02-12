@@ -21,7 +21,7 @@ const handleRegister = (req,res,postgres_db,bcrypt) =>{
             .then(tranx.commit)
             .catch(tranx.rollback)
        })
-       .catch(err=> res.status(400).json('email already existed'));
+       .catch(err=> res.status(400).json('unable to register'));
     
     }
     
