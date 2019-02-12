@@ -34,7 +34,7 @@ app.post('/imageurl',(req,res) =>{  image.handleImageUrl(req,res)});
 
 
 
-app.listen(procee.env.PORT || 3001, ()={
+app.listen(process.env.PORT || 3001, ()={
   console.log(`it is working${process.env.PORT}`)
 }); 
 
