@@ -1,10 +1,11 @@
 
-const handleSignin = (req,res,postgres_db,bcrypt) =>{
+const handleSignin = (req,res,postgres_db,bcrypt,my_database) =>{
 
    if(!req.body.email || !req.body.password){
         return res.status(400).json('empty field signin');
     }
 
+    if(postgres_db){
     postgres_db.select('email','hash').from('login')
     .where('email','=',req.body.email)
     .then(data=>{
@@ -23,19 +24,13 @@ const handleSignin = (req,res,postgres_db,bcrypt) =>{
     }) 
     .catch(err=> res.status(400).json('wrong credential'));
 
-
+ }
+ else{
+    res.json(my_database.users[0])
+ }
 }
 
 module.exports={
     handleSignin : handleSignin
 };
 
-// app.post('/signin',(req,res)=>{
-//     if((req.body.email === database.users[0].email) &&
-//        (req.body.password === database.users[0].password)){
-//         res.json(database.users[0]);
-//     }
-//     else{
-//         res.json('wrong password');
-//     }   
-// });
